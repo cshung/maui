@@ -7,25 +7,17 @@ namespace Maui.Controls.Sample
 {
 	public static class MauiProgram
 	{
-		public static MauiApp CreateMauiApp() =>
-			MauiApp
-				.CreateBuilder()
+		public static MauiApp CreateMauiApp()
+		{
+			var builder = MauiApp.CreateBuilder();
+			builder
 				.UseMauiApp<App>()
-				.Build();
-	}
-
-	class App : Application
-	{
-		protected override Window CreateWindow(IActivationState activationState) =>
-			new Window(
-				new ContentPage
+				.ConfigureFonts(fonts =>
 				{
-					Content = new Label
-					{
-						Text = "Hello Sandbox!",
-						HorizontalOptions = LayoutOptions.Center,
-						VerticalOptions = LayoutOptions.Center,
-					}
+					fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 				});
+
+			return builder.Build();
+		}
 	}
 }
